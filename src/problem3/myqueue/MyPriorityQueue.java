@@ -27,6 +27,7 @@ public class MyPriorityQueue {
     public void push(String name, int roll) {
         Node n = new Node(name, roll);
         Node temp = front;
+        Node prev = null;
         if (front == null)
             front = n;
 
@@ -35,11 +36,13 @@ public class MyPriorityQueue {
                 n.setNext(front);
                 front = n;
             } else {
-                while (temp.getNext() != null && temp.getRoll_no() < roll)
+                while (temp.getNext() != null && temp.getRoll_no() < roll) {
+                    prev = temp;
                     temp = temp.getNext();
-                Node t = temp.getNext();
-                n.setNext(t);
-                temp.setNext(n);
+                }
+                prev.setNext(n);
+                n.setNext(temp);
+
             }
         }
     }
