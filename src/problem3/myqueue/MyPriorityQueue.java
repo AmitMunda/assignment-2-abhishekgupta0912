@@ -37,11 +37,12 @@ public class MyPriorityQueue {
                 front = n;
             } else {
                 while (temp.getNext() != null && temp.getRoll_no() < roll) {
-                    prev = temp;
+                    //prev = temp;
                     temp = temp.getNext();
                 }
-                prev.setNext(n);
-                n.setNext(temp);
+                //prev.setNext(n);
+                n.setNext(temp.getNext());
+                temp.setNext(n);
 
             }
         }
